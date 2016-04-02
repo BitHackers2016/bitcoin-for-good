@@ -1,0 +1,14 @@
+LOG:  database system was shut down at 2016-04-02 14:33:08 PDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+FATAL:  database "shafqatdulal" does not exist
+FATAL:  database "shafqatdulal" does not exist
+FATAL:  database "shafqatdulal" does not exist
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 49457) running in data directory "/usr/local/var/postgres/data"?
+FATAL:  database "shafqatdulal" does not exist
+ERROR:  database "bitcoin-for-good_development" already exists
+STATEMENT:  CREATE DATABASE "bitcoin-for-good_development" ENCODING = 'unicode'
+ERROR:  database "bitcoin-for-good_test" already exists
+STATEMENT:  CREATE DATABASE "bitcoin-for-good_test" ENCODING = 'unicode'
