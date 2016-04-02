@@ -12,3 +12,7 @@ ERROR:  database "bitcoin-for-good_development" already exists
 STATEMENT:  CREATE DATABASE "bitcoin-for-good_development" ENCODING = 'unicode'
 ERROR:  database "bitcoin-for-good_test" already exists
 STATEMENT:  CREATE DATABASE "bitcoin-for-good_test" ENCODING = 'unicode'
+ERROR:  database "bitcoin-for-good_development" already exists
+STATEMENT:  CREATE DATABASE "bitcoin-for-good_development" ENCODING = 'unicode'
+ERROR:  database "bitcoin-for-good_test" already exists
+STATEMENT:  CREATE DATABASE "bitcoin-for-good_test" ENCODING = 'unicode'
