@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402224608) do
+ActiveRecord::Schema.define(version: 20160402225202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20160402224608) do
     t.datetime "updated_at",        null: false
     t.string   "encrypted_data_iv"
     t.integer  "user_id"
+    t.integer  "charity_id"
   end
 
+  add_index "transactions", ["charity_id"], name: "index_transactions_on_charity_id", using: :btree
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -50,5 +52,6 @@ ActiveRecord::Schema.define(version: 20160402224608) do
     t.string   "encrypted_data_iv"
   end
 
+  add_foreign_key "transactions", "charities"
   add_foreign_key "transactions", "users"
 end
