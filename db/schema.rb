@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402222420) do
+ActiveRecord::Schema.define(version: 20160402224139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,16 +32,19 @@ ActiveRecord::Schema.define(version: 20160402222420) do
   create_table "transactions", force: :cascade do |t|
     t.string   "charity"
     t.jsonb    "encrypted_data"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "encrypted_data_iv"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "encrypted_email"
     t.jsonb    "encrypted_data"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "encrypted_email_iv"
+    t.string   "encrypted_data_iv"
   end
 
 end
