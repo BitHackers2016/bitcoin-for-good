@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  get 'dashboard', to: 'dashboard#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
