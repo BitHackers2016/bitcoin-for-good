@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403163436) do
+ActiveRecord::Schema.define(version: 20160403172210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 20160403163436) do
     t.string   "encrypted_email_iv"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "transaction_id"
   end
+
+  add_index "charities", ["transaction_id"], name: "index_charities_on_transaction_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.string   "charity_name"
@@ -51,7 +54,9 @@ ActiveRecord::Schema.define(version: 20160403163436) do
     t.string   "encrypted_name_iv"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "identifier"
   end
 
+  add_foreign_key "charities", "transactions"
   add_foreign_key "transactions", "users"
 end
