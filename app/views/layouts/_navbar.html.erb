@@ -10,9 +10,13 @@
 
     <div class="collapse navbar-collapse navHeaderCollapse">
       <ul class="nav navbar-nav navbar-right">
+        <% if !@userid %>
         <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#features">Signup/Login</a></li>
+            <% else %>
+        <li><a href="#">User Profile</a></li>
+            <% end %>
       </ul>
     </div>
 

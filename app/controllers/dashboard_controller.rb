@@ -21,37 +21,58 @@ class DashboardController < ApplicationController
     @body = response.body
 
     token = (JSON.parse @body)["access_token"]
+    refresh_token = (JSON.parse @body)["refresh_token"]
 
-    balance(request, token)
+    client = Coinbase::Wallet::OAuthClient.new(access_token: token, refresh_token: refresh_token)
+
+    curr_user = client.primary_account
+
+    @userid = curr_user.id
+    if (User.find_by_identifier(curr_user.id) == nil)
+        User.create(data: {}, name: curr_user.name, identifier: curr_user.id)
+    end
+    balance(request, client)
+    history(request, client)
+
+    @charities = Charity.all
+    end
+
+    def balance(request, client)
+      account = client.primary_account
+      @balance = account.balance.amount
+
+      # uri = URI.parse("https://api.coinbase.com/v2/accounts")
+      #
+      # http = Net::HTTP.new(uri.host, uri.port)
+      # http.use_ssl = true
+      # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      #
+      # request = Net::HTTP::Get.new(uri.request_uri)
+      #
+      # request["Authorization"] = "Bearer " + token
+      #
+      # @response2 = http.request(request)
+      #
+      # @account = @response2.body
+      #
+      # @balance = (JSON.parse @account)["data"][0]["balance"]["amount"]
+    end
+
+    def pay
+      client = Coinbase::Wallet::OAuthClient.new(access_token: token)
+    end
+
+    def auth
+    end
+
+    def history(request, client)
+      account = client.primary_account
+      identifier = account.id
+      curr_user = User.find_by_identifier(identifier)
+      @transactions = curr_user.transactions
+    end
+
+  def donate
+  end
   end
 
-  def balance(request, token)
-    puts token
-    client = Coinbase::Wallet::OAuthClient.new(access_token: token)
-    account = client.primary_account
-    @balance = account.balance.amount
-
-    # uri = URI.parse("https://api.coinbase.com/v2/accounts")
-    #
-    # http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = true
-    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    #
-    # request = Net::HTTP::Get.new(uri.request_uri)
-    #
-    # request["Authorization"] = "Bearer " + token
-    #
-    # @response2 = http.request(request)
-    #
-    # @account = @response2.body
-    #
-    # @balance = (JSON.parse @account)["data"][0]["balance"]["amount"]
-  end
-
-  def pay
-    client = Coinbase::Wallet::OAuthClient.new(access_token: token)
-  end
-
-  def auth
-  end
-end

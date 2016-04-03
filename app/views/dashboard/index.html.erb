@@ -3,14 +3,31 @@
   <div>
     <strong>Amount of bitcoin</strong>: <i class="fa fa-btc"><%= @balance %></i>
     <div style="float: right"><a href="#">Buy bitcoin</a></div>
-    <a href=""><button>Send money</button></a>
   </div>
-  <div class="row">
+  <div class="row grand">
     <div class="col-lg-6">
       <h2 align="center">Charities</h2>
+      <ol>
+        <% @charities.each do |charity| %>
+            <li class="charity">
+              <div style="float: right"><a href=""><button>Send money</button></a></div>
+              <%= charity.name %> - <%= charity.city %>, <%= charity.state %>, <%= charity.country %> <br>
+              <%= charity.ein %>
+            </li>
+        <% end %>
+      </ol>
     </div>
     <div class="col-lg-6">
       <h2 align="center">Transaction History</h2>
+      <% if @transactions.empty? %>
+        <h1 align="center">No donations yet.<br> Donate to a charity today!</h1>
+          <% else %>
+        <% for @transaction in @transactions %>
+          <%= @transaction.data.description %>
+          <%= @transaction.data.amount.amount %>
+          <%= @transaction.data.amount.currency %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
