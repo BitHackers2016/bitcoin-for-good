@@ -5,6 +5,8 @@ class Charity < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :country, presence: true
+
+  has_many :transactions
   
 	def encryption_key
 		'This is the charity email!!'

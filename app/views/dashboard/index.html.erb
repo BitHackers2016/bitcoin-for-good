@@ -11,6 +11,11 @@
     </div>
     <div class="col-lg-6">
       <h2 align="center">Transaction History</h2>
+      <% for @transaction in @transactions %>
+        <%= @transaction.data.description %>
+        <%= @transaction.data.amount.amount %>
+        <%= @transaction.data.amount.currency %>
+      <% end %>
     </div>
   </div>
 </div>
