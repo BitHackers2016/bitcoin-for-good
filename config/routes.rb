@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'dashboard/donate', to:'dashboard#donate'
 
+  post 'dashboard/donate', to: 'home#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
