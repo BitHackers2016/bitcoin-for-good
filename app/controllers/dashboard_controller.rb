@@ -11,12 +11,13 @@ class DashboardController < ApplicationController
               "code" => @code,
               "client_id" => @CLIENT_ID,
               "client_secret" => @CLIENT_SECRET,
-              "redirect_uri" => "http://localhost:3000/auth"}
+              "redirect_uri" => "https://bitcoin-for-good.herokuapp.com/dashboard"}
 
-    # x = Net::HTTP.post_form(URI.parse('https://api.coinbase.com/oauth/token'))
+    response = Net::HTTP.post_form(URI.parse("https://api.coinbase.com/oauth/token"), params)
+    @body = response.body
+    puts @body
   end
 
   def auth
-
   end
 end
