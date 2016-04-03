@@ -1,8 +1,9 @@
 <h1 align="center">Dashboard</h1>
 <div class="container">
   <div>
-    <strong>Amount of bitcoin</strong>: <i class="fa fa-btc"></i>
+    <strong>Amount of bitcoin</strong>: <i class="fa fa-btc"><%= @balance %></i>
     <div style="float: right"><a href="#">Buy bitcoin</a></div>
+    <a href=""><button>Send money</button></a>
   </div>
   <p>The query string is: <%= @code %></p>
   <div class="row">
