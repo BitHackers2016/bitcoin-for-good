@@ -21,12 +21,19 @@ class DashboardController < ApplicationController
     @body = response.body
 
     token = (JSON.parse @body)["access_token"]
+    refresh_token = (JSON.parse @body)["refresh_token"]
 
-    balance(request, token)
+    client = Coinbase::Wallet::OAuthClient.new(access_token: token, refresh_token: refresh_token)
+
+    curr_user_id = client.primary_account.id
+    if User.find_by_identifier(curr_user_id) == nil:
+      User.create({})
+
+    balance(request, client)
+    history(request, client)
   end
 
-  def balance(request, token)
-    client = Coinbase::Wallet::OAuthClient.new(access_token: token)
+  def balance(request, client)
     account = client.primary_account
     @balance = account.balance.amount
 
@@ -52,5 +59,12 @@ class DashboardController < ApplicationController
   end
 
   def auth
+  end
+
+  def history(request, client)
+    account = client.primary_account
+    identifier = account.id
+    curr_user = User.find_by_identifier(identifier)
+    @history = curr_user.transactions
   end
 end
