@@ -16,3 +16,7 @@ ERROR:  database "bitcoin-for-good_development" already exists
 STATEMENT:  CREATE DATABASE "bitcoin-for-good_development" ENCODING = 'unicode'
 ERROR:  database "bitcoin-for-good_test" already exists
 STATEMENT:  CREATE DATABASE "bitcoin-for-good_test" ENCODING = 'unicode'
+ERROR:  relation "charities" already exists
+STATEMENT:  CREATE TABLE "charities" ("id" serial primary key, "ein" character varying, "name" character varying, "city" character varying, "state" character varying, "country" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+FATAL:  database "bitcoin-for-good_development" does not exist
+FATAL:  database "bitcoin-for-good_development" does not exist
