@@ -1,16 +1,15 @@
-<div class="row">
-  <h1>
-    <%= @charity.name %>!
-  </h1>
-  <h3>
-    <%= @charity.name %> - <%= @charity.city %>, <%= @charity.state %>, <%= @charity.country %> <br>
-<%= @charity.ein %>
-  </h3>
+<div class="row grand">
+  <div class="col-lg-8 col-lg-offset-2">
   <%= form_for(:dashboard, url: dashboard_donate_path) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :amount %>
     <%= f.text_field :amount, class: "form-control" %>
   </div>
   <%= f.submit "Donate money", class:"btn btn-primary" %>
   <% end %>
+  </div>
 </div>

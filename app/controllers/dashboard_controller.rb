@@ -73,6 +73,7 @@ class DashboardController < ApplicationController
     end
 
   def donate
+    @charities = Charity.all
   end
   end
 
