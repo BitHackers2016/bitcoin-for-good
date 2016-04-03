@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  get 'charity/index'
+
+  get 'charity/show'
+
+  get 'charity/new'
+
+  get 'charity/create'
+
+  get 'charity/update'
+
+  get 'charity/donate'
+
+  get 'transaction/create'
+
+  get 'transaction/show'
+
+  get 'user/new'
+
+  get 'user/create'
+
+  get 'user/show'
+
   get 'dashboard/index'
 
   get 'home/index'
