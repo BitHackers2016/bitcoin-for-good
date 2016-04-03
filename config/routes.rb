@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'auth', to: 'dashboard#auth'
 
-  get 'dashboard/donate', to :'dashboard#donate'
+  get 'dashboard/donate', to:'dashboard#donate'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

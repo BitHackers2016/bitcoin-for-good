@@ -10,7 +10,7 @@
       <ol>
         <% @charities.each do |charity| %>
             <li class="charity">
-              <div style="float: right"><a href=""><button>Send money</button></a></div>
+              <div style="float: right"><a href=""><button><a href="/dashboard/donate">Send money</a></button></a></div>
               <%= charity.name %> - <%= charity.city %>, <%= charity.state %>, <%= charity.country %> <br>
               <%= charity.ein %>
             </li>

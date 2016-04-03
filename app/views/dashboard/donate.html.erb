@@ -1,12 +1,12 @@
 <div class="row">
   <h1>
-    <%= charity.name %>!
+    <%= @charity.name %>!
   </h1>
   <h3>
-    <%= charity.name %> - <%= charity.city %>, <%= charity.state %>, <%= charity.country %> <br>
-<%= charity.ein %>
+    <%= @charity.name %> - <%= @charity.city %>, <%= @charity.state %>, <%= @charity.country %> <br>
+<%= @charity.ein %>
   </h3>
-  <%= form_for(:dashboard, :url: dashboard_donate_path) do |f| %>
+  <%= form_for(:dashboard, url: dashboard_donate_path) do |f| %>
   <div class="form-group">
     <%= f.label :amount %>
     <%= f.text_field :amount, class: "form-control" %>
