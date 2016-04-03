@@ -25,12 +25,16 @@ class DashboardController < ApplicationController
 
     client = Coinbase::Wallet::OAuthClient.new(access_token: token, refresh_token: refresh_token)
 
-    curr_user_id = client.primary_account.id
-    if User.find_by_identifier(curr_user_id) == nil:
-        User.create({})
+    curr_user = client.primary_account
+
+    @userid = curr_user.id
+    if (User.find_by_identifier(curr_user.id) == nil)
+        User.create(data: {}, name: curr_user.name, identifier: curr_user.id)
     end
     balance(request, client)
     history(request, client)
+
+    @charities = Charity.all
     end
 
     def balance(request, client)
@@ -65,7 +69,10 @@ class DashboardController < ApplicationController
       account = client.primary_account
       identifier = account.id
       curr_user = User.find_by_identifier(identifier)
-      @history = curr_user.transactions
+      @transactions = curr_user.transactions
     end
+
+  def donate
+  end
   end
 
