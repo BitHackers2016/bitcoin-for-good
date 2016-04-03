@@ -1,3 +1,48 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/************************
+  VARIABLES & MIXINS
+************************/
+
+$maincolor: #4da6ff;
+$secondarycolor: #004080;
+$gallery: #efefef;
+
+@mixin radial-gradient($color1, $color2) {
+  background: -moz-radial-gradient(circle, $color1, $color2); //firefox
+  background: -webkit-radial-gradient(circle, $color1, $color2); // chrome, safari
+  background: -ms-radial-gradient(circle, $color1, $color2); // ie
+  background: -o-radial-gradient(circle, $color1, $color2); // opera
+  background-color: $color1; // old browsers
+}
+
+.grand {
+  @include radial-gradient($maincolor, $secondarycolor);
+  padding: 15px 0;
+  color: white;
+}
+
+.intro {
+  padding: 30px 0;
+}
+
+.gallery {
+  background-color: $gallery;
+  padding: 15px 0;
+}
+
+.footer {
+  height: 48px;
+  padding: 12px;
+}
+
+.signin-button {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
