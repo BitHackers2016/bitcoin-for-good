@@ -1,2 +1,17 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1 align="center">Dashboard</h1>
+<div class="container">
+  <div>
+    <strong>Amount of bitcoin</strong>: <i class="fa fa-btc"><%= @balance %></i>
+    <div style="float: right"><a href="#">Buy bitcoin</a></div>
+    <a href=""><button>Send money</button></a>
+  </div>
+  <p>The query string is: <%= @code %></p>
+  <div class="row">
+    <div class="col-lg-6">
+      <h2 align="center">Charities</h2>
+    </div>
+    <div class="col-lg-6">
+      <h2 align="center">Transaction History</h2>
+    </div>
+  </div>
+</div>
