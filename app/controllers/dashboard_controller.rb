@@ -16,6 +16,20 @@ class DashboardController < ApplicationController
     response = Net::HTTP.post_form(URI.parse("https://api.coinbase.com/oauth/token"), params)
     @body = response.body
     puts @body
+
+    uri = URI.parse("https://api.coinbase.com/v2/user")
+
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    token = (JSON.parse @body)["access_account"]
+
+    request.headers["Authorization"] = "Bearer " + token
+
+    response2 = http.request(request)
+
+    puts response2.body
   end
 
   def auth
